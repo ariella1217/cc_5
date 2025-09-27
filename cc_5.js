@@ -47,3 +47,37 @@ employee.forEach(individual => {
     console.log(`  Total Pay: $${totalPay.toFixed(2)}`);
     console.log('---'); 
 });
+
+// Step 5: Write calculateTaxes(grossPay)
+
+function calculateTaxes(grossPay) {
+    let taxRate = 0.15;
+    return grossPay * taxRate;
+}
+
+// Step 6: Write processPayroll(employee)
+
+function processPayroll(employee) {
+    const basePay = calculateBasePay(employee.hourlyRate, employee.hoursWorked);
+    const overtimePay = calculateOvertimePay(employee.hourlyRate, employee.hoursWorked);
+    const grossPay = basePay + overtimePay;
+    const taxes = calculateTaxes(grossPay);
+    const netPay = grossPay - taxes;
+
+    return {
+        name: employee.name,
+        basePay: basePay,
+        overtimePay: overtimePay,
+        grossPay: grossPay,
+        taxes: taxes,
+        netPay: netPay
+    };
+}
+
+// Step 7: Loop through your employee array and log the payroll object for each employee.
+
+employee.forEach(individual => {
+    const payroll = processPayroll(individual);
+    console.log(payroll);
+});
+
