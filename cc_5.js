@@ -33,3 +33,17 @@ function calculateOvertimePay(rate, hours) {
   return (rate * 1.5) * overtimeHours;
 };
 
+// Test each step so far in console.log to make sure it works
+employee.forEach(individual => {
+    const basePay = calculateBasePay(individual.hourlyRate, individual.hoursWorked);
+    const overtimePay = calculateOvertimePay(individual.hourlyRate, individual.hoursWorked);
+    const totalPay = basePay + overtimePay;
+
+    console.log(`${individual.name}:`);
+    console.log(`  Hourly Rate: $${individual.hourlyRate}`);
+    console.log(`  Hours Worked: ${individual.hoursWorked}`);
+    console.log(`  Base Pay (up to 40h): $${basePay.toFixed(2)}`);
+    console.log(`  Overtime Pay: $${overtimePay.toFixed(2)}`);
+    console.log(`  Total Pay: $${totalPay.toFixed(2)}`);
+    console.log('---'); 
+});
